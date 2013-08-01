@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app>
 	<head>
 		<meta charset="utf-8">
 		<title>HuffPost Labs | Beverages</title>
 		<link href="css/index.css" rel="stylesheet">
 		<link href="css/bootstrap.css" rel="stylesheet">
 	</head>
-	<body>
+	<body ng-controller="BeveragesCtrl">
 		<div class="navbar navbar-fixed-top">  
 			<div class="navbar-inner">  
 				<div class="container">  
@@ -44,7 +44,11 @@
 							<h2 class="fridge-name-type">Real</h2>
 							<h2 class="fridge-name">Fridge</h2>
 						</div>
-						<div class="fridge-piece fridge-row">
+						<div ng-repeat="realBev in realBeverages" class="fridge-piece fridge-row">
+							<div class="beverage">
+								<span class="upvotes">{{realBev.upvotes}}</span>
+								<span class="name">{{realBev.name}}</span>
+							</div>
 						</div>
 						<div class="fridge-piece fridge-bottom">
 						</div>
@@ -85,6 +89,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="http://code.angularjs.org/1.1.5/angular.js"></script>
+	<script src="js/controller.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>  
