@@ -1,0 +1,50 @@
+.dropdown-menu li{
+	padding: 10px;
+}
+.container{margin-bottom: 100px;}
+.row{
+	padding-top: 100px;
+}
+#real-fridge-div{
+}
+#wish-fridge-div{
+}
+.fridge-piece h2{
+	color: purple;
+}
+
+.fridge-name-type{
+	padding: 70px 0px 0px 100px;
+}
+.fridge-name{
+	padding: 40px 0px 0px 100px;
+}
+.fridge-top{
+	width: 400px;
+	height: 275px;
+	background-image: url('../img/empty-fridge1-top.jpg');
+	background-size: cover;
+}
+.fridge-row{
+	width: 315px;
+	height: 30px;
+	background-image: url('../img/empty-fridge1-middle.png');
+	background-size: cover;
+	padding: 10px 60px 10px 30px;
+}
+.beverage{
+	border: 1px solid red;
+}
+.fridge-bottom{
+	width: 405px;
+	height: 160px;
+	background-image: url('../img/empty-fridge1-bottom.png');
+	background-size: cover;	
+}
+.new-beverage{
+	width: 100px;
+	margin: 30px 50px 20px 80px;
+}
+
+
+

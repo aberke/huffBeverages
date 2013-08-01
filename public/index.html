@@ -1,2 +1,103 @@
-hello world
-beverages
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>HuffPost Labs | Beverages</title>
+		<link href="css/index.css" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top">  
+			<div class="navbar-inner">  
+				<div class="container">  
+					<ul class="nav">  
+						<li class="active">  
+						<a class="brand" href="#">HuffPost Beverages</a>  
+						</li>  
+						<li><a href="#">About</a></li>  
+						<li><a href="#">Portfolio</a></li>  
+						<li><a href="#">Contact</a></li>  
+					</ul>
+					<ul class="nav pull-right">  
+						<li class="dropdown">  
+							<a href="#"  
+							class="dropdown-toggle"  
+							data-toggle="dropdown">  
+							Social  
+							<b class="caret"></b>  
+							</a>  
+							<ul class="dropdown-menu">   
+								<li><img src="img/fridge-pink.jpg" height="75px" width="20px"><p>OMG <em>beverages</em> keep me going!</p></li>  
+								<li class="socials"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>  
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>  
+							</ul>  
+						</li>  
+					</ul> 
+				</div>  
+			</div>  
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<div id="real-fridge-div">
+						<div class="fridge-piece fridge-top">
+							<h2 class="fridge-name-type">Real</h2>
+							<h2 class="fridge-name">Fridge</h2>
+						</div>
+						<div class="fridge-piece fridge-row">
+						</div>
+						<div class="fridge-piece fridge-bottom">
+						</div>
+					</div>
+				</div>
+				<div class="span6">
+					<div id="wish-fridge-div">
+						<div class="fridge-piece fridge-top">
+							<h2 class="fridge-name-type"><i>*Wish*</i></h2>
+							<h2 class="fridge-name">Fridge</h2>
+						</div>
+						<div class="fridge-piece fridge-row">
+							<div class="beverage">Beverage Name</div>
+						</div>
+						<div class="fridge-piece fridge-row">
+							<div class="beverage btn" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="Title" data-trigger="hover">22</div>
+						</div>
+						<div class="fridge-piece fridge-bottom">
+							<div class="new-beverage btn" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="Title" data-trigger="click">Add Beverage</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+
+    <a class="popup btn" href="#" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover">22</a>
+
+       
+
+    
+    
+</div>
+<div id="popover_content_wrapper" style="display: none">
+  <div>This is your div content</div>
+</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://code.angularjs.org/1.1.5/angular.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>  
+		$('.beverage').popover();
+		$('.new-beverage').popover();
+		$(document).ready(function(){
+  $('.popup').popover({ 
+    html : true,
+    content: function() {
+      return $('#popover_content_wrapper').html();
+    }
+  });
+});
+	</script>
+	</body>
+</html>
