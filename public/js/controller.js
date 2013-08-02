@@ -74,7 +74,7 @@ function BeveragesCtrl($scope, $http){
 					calories:bev.calories
 				},
 		})
-		.success(function(returnedData){console.log(returnedData);})
+		.success(function(returnedData){})
 		.error(function(){console.log('API ERROR');});
 	}
 	$scope.postBev = function(realBool){
@@ -129,12 +129,9 @@ function BeveragesCtrl($scope, $http){
 		}
 		return bevClass;
 	}
-
-
 	var init = function(){
 		get_beverages();
 	}
 	init();
 }
-var submit = function(){console.log('hi');}
 
