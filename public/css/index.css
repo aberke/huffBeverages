@@ -9,22 +9,39 @@
 }
 #wish-fridge-div{
 }
-.fridge-piece h2{
-	color: purple;
-}
+.fridge-piece h2{color: purple;}
 
-.fridge-name-type{
-	padding: 70px 0px 0px 100px;
-}
-.fridge-name{
-	padding: 40px 0px 0px 100px;
-}
+.fridge-name{padding: 70px 0px 0px 70px;}
 .fridge-top{
 	width: 400px;
 	height: 275px;
 	background-image: url('../img/empty-fridge1-top.jpg');
 	background-size: cover;
 }
+.selectedBev-div, .newBev-div{
+	background-color: white;
+	border-radius: 20px;
+	opacity: 0.8;
+	padding: 5px 10px;
+	margin: 25px 30px;
+	width: 200px;
+	text-align: center;
+}
+.newBev-div input{
+	width: 170px;
+	height: 12px;
+	font-size: 11px;
+}
+.newBev-div input[type=submit]{
+	margin:0;
+	padding: 2px 8px;
+	font-weight: 400px;
+}
+.newBev-div form{margin: 0;}
+.selectedBev-div p{
+	margin: 1px;
+}
+
 .fridge-row{
 	width: 315px;
 	height: 30px;
@@ -33,8 +50,28 @@
 	padding: 10px 60px 10px 30px;
 }
 .beverage{
-	border: 1px solid red;
+	background-color: blue;
+	border-radius: 10px;
+	color: white;
+	opacity: 0.5;
+	text-align: center;
+	padding: 5px;
+	width: 210px;
 }
+.beverage:hover, .beverage:active{opacity:1;}
+.upvote, .upvotes, .downvote, .downvotes{
+	padding: 0px 5px;
+}
+.downvote, .upvote{
+	border-radius: 20px;
+	background-color: white;
+}
+.upvote, .upvotes{float: left;}
+.upvote{color: blue;}
+.downvote, .downvotes{float: right;}
+.downvote{color: red;}
+
+
 .fridge-bottom{
 	width: 405px;
 	height: 160px;
@@ -45,6 +82,7 @@
 	width: 100px;
 	margin: 30px 50px 20px 80px;
 }
+
 
 
 

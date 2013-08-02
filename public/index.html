@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<title>HuffPost Labs | Beverages</title>
 		<link href="css/index.css" rel="stylesheet">
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://code.angularjs.org/1.1.5/angular.js"></script>
+		<script src="js/controller.js"></script>
 	</head>
 	<body ng-controller="BeveragesCtrl">
 		<div class="navbar navbar-fixed-top">  
@@ -41,16 +43,32 @@
 				<div class="span6">
 					<div id="real-fridge-div">
 						<div class="fridge-piece fridge-top">
-							<h2 class="fridge-name-type">Real</h2>
-							<h2 class="fridge-name">Fridge</h2>
+							<h2 class="fridge-name">Real Fridge</h2>
+							<div class="newBev-div" ng-show="showNewRealForm">
+								<form ng-submit="postBev(true)">
+									<input type="text" ng-model="bevName" size="15" placeholder="beverage name">
+									<input type="number" ng-model="bevCalories" size="3" label="calories">
+									<input type="text" ng-model="bevDescription" size="20" placeholder="description">
+									<input type="submit" value="Post">
+								</form>
+							</div>
+							<div class="selectedBev-div" ng-show="selectedRealBev">
+								<h4>{{selectedRealBev.name}}</h4>
+								<p><i>calories:</i> {{selectedRealBev.calories}}</p>
+								<p><i>description:</i> {{selectedRealBev.description}}</p>
+							</div>
 						</div>
 						<div ng-repeat="realBev in realBeverages" class="fridge-piece fridge-row">
-							<div class="beverage">
+							<div ng-click="selectReal(realBev)" class="beverage">
+								<span class="upvote" ng-click="upvote(realBev)">+</span>
 								<span class="upvotes">{{realBev.upvotes}}</span>
 								<span class="name">{{realBev.name}}</span>
+								<span class="downvotes">{{realBev.downvotes}}</span>
+								<span class="downvote" ng-click="downvote(realBev)">-</span>
 							</div>
 						</div>
 						<div class="fridge-piece fridge-bottom">
+							<div id="new-real" class="new-beverage btn" rel="popover" data-placement="top" data-original-title="Add A Real Beverage" data-trigger="hover" ng-click="newRealButtonClicked()">Add Beverage</div>
 						</div>
 					</div>
 				</div>
@@ -60,49 +78,41 @@
 							<h2 class="fridge-name-type"><i>*Wish*</i></h2>
 							<h2 class="fridge-name">Fridge</h2>
 						</div>
-						<div class="fridge-piece fridge-row">
+						<div ng-repeat="wishBev in wishBeverages" class="fridge-piece fridge-row">
 							<div class="beverage">Beverage Name</div>
 						</div>
-						<div class="fridge-piece fridge-row">
-							<div class="beverage btn" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="Title" data-trigger="hover">22</div>
-						</div>
 						<div class="fridge-piece fridge-bottom">
-							<div class="new-beverage btn" data-content="Popover with data-trigger" rel="popover" data-placement="top" data-original-title="Title" data-trigger="click">Add Beverage</div>
+							<div id="new-wish" class="new-beverage btn" rel="popover" data-placement="top" data-original-title="Add A Wish Beverage" data-trigger="hover">Add Beverage</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-<div class="container">
 
-    <a class="popup btn" href="#" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover">22</a>
-
-       
-
-    
-    
+<div class="popup" id="new-wish-popup" style="display: none">
+  	<p>This is your chance!</p>
+  	<p>Add your fav beverage to the wish fridge and get all your friends to vote for it!</p>
 </div>
-<div id="popover_content_wrapper" style="display: none">
-  <div>This is your div content</div>
+<div class="popup" id="new-real-popup" style="display: none">
+  	<p>Something's missing??!</p>
+  	<p>Add it to the fridge.</p>
 </div>
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://code.angularjs.org/1.1.5/angular.js"></script>
-	<script src="js/controller.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<link href="css/bootstrap.css" rel="stylesheet">
 	<script src="js/bootstrap.min.js"></script>
 	<script>  
 		$('.beverage').popover();
-		$('.new-beverage').popover();
 		$(document).ready(function(){
-  $('.popup').popover({ 
-    html : true,
-    content: function() {
-      return $('#popover_content_wrapper').html();
-    }
-  });
-});
+			$('#new-wish').popover({ 
+				html : true,
+				content: function() {return $('#new-wish-popup').html();}
+			});
+			$('#new-real').popover({ 
+				html : true,
+				content: function() {return $('#new-real-popup').html();}
+	  		});
+		});
 	</script>
 	</body>
 </html>

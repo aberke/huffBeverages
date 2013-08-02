@@ -19,16 +19,6 @@ db.open(function(err, db) {
     }
 });
  
-exports.findById = function(req, res) {
-    var id = req.params.id;
-    console.log('Retrieving beverage: ' + id);
-    db.collection('beverages', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send(item);
-        });
-    });
-};
- 
 exports.findAll = function(req, res) {
     db.collection('beverages', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -95,30 +85,24 @@ var populateDB = function() {
         real: true,
         upvotes: 0,
         downvotes: 0,
-        size: "can",
         description: "Everyone's fav",
-        calories: 140,
-        caffeinated: true
+        calories: 140
     },
     {
         name: "Fanta",
         real: false,
         upvotes: 0,
         downvotes: 0,
-        size: "bottle",
         description: "Don't you wanta",
-        calories: 140,
-        caffeinated: false
+        calories: 140
     },
     {
         name: "Seltzer",
         real: true,
         upvotes: 0,
         downvotes: 0,
-        size: "bottle",
         description: "so crisp...",
-        calories: 0,
-        caffeinated: false
+        calories: 0
     }];
  
     db.collection('beverages', function(err, collection) {

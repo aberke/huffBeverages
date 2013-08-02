@@ -12,7 +12,6 @@ app.configure(function () {
 });
  
 app.get('/beverages', beverage.findAll);
-app.get('/beverages/:id', beverage.findById);
 app.post('/beverages', beverage.addBeverage);
 app.put('/beverages/:id', beverage.updateBeverage);
 app.delete('/beverages/:id', beverage.deleteBeverage);
