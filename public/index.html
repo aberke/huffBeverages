@@ -53,13 +53,13 @@
 								</form>
 							</div>
 							<div class="selectedBev-div" ng-show="selectedRealBev">
-								<h4>{{selectedRealBev.name}}</h4>
+								<h4><span class="delete" rel="popover" data-content="Actually this isn't in the fridge anymore" data-placement="top" data-original-title="Delete Beverage" data-trigger="hover" ng-click="deleteSelectedRealClicked()">X</span> {{selectedRealBev.name}}</h4>
 								<p><i>calories:</i> {{selectedRealBev.calories}}</p>
 								<p><i>description:</i> {{selectedRealBev.description}}</p>
 							</div>
 						</div>
 						<div ng-repeat="realBev in realBeverages" class="fridge-piece fridge-row">
-							<div ng-click="selectReal(realBev)" class="beverage">
+							<div ng-class="classByVotes(realBev)" ng-click="selectReal(realBev)" class="beverage">
 								<span class="upvote" ng-click="upvote(realBev)">+</span>
 								<span class="upvotes">{{realBev.upvotes}}</span>
 								<span class="name">{{realBev.name}}</span>
@@ -103,6 +103,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>  
 		$('.beverage').popover();
+		$('.delete').popover();
 		$(document).ready(function(){
 			$('#new-wish').popover({ 
 				html : true,

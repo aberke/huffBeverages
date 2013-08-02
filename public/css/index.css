@@ -18,6 +18,11 @@
 	background-image: url('../img/empty-fridge1-top.jpg');
 	background-size: cover;
 }
+.delete{
+	float: left;
+	color: red;
+	cursor: pointer;
+}
 .selectedBev-div, .newBev-div{
 	background-color: white;
 	border-radius: 20px;
@@ -49,8 +54,9 @@
 	background-size: cover;
 	padding: 10px 60px 10px 30px;
 }
+.blue-background{background-color: blue;}
+.red-background{background-color: red;}
 .beverage{
-	background-color: blue;
 	border-radius: 10px;
 	color: white;
 	opacity: 0.5;

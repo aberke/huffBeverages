@@ -7,6 +7,18 @@ function BeveragesCtrl($scope, $http){
 	$scope.showNewRealForm = false;
 	$scope.showNewWishForm = false;
 
+	$scope.deleteSelectedRealClicked = function(){
+		$http({
+			method: 'DELETE',
+			url: '/beverages/'+$scope.selectedRealBev._id,
+		})
+		.success(function(returnedData){
+			$scope.realBeverages.splice($scope.realBeverages.indexOf($scope.selectedRealBev,1));
+			$scope.selectedRealBev = null;
+		})
+		.error(function(){console.log('API ERROR');});		
+	}
+
 	$scope.newRealButtonClicked = function(){
 		$scope.selectedRealBev = false;
 		$scope.showNewRealForm = true;
@@ -94,6 +106,10 @@ function BeveragesCtrl($scope, $http){
 		})
 		.success(function(returnedData){handle_beverages(returnedData);})
 		.error(function(){console.log('API ERROR');});
+	}
+	$scope.classByVotes = function(bev){
+		if(bev.upvotes >= bev.downvotes){return 'blue-background';}
+		else{return 'red-background';}
 	}
 
 
