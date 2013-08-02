@@ -25,7 +25,7 @@
 							<a href="#"  
 							class="dropdown-toggle"  
 							data-toggle="dropdown">  
-							Social  
+							Love to Tweet  
 							<b class="caret"></b>  
 							</a>  
 							<ul class="dropdown-menu">   
@@ -75,14 +75,32 @@
 				<div class="span6">
 					<div id="wish-fridge-div">
 						<div class="fridge-piece fridge-top">
-							<h2 class="fridge-name-type"><i>*Wish*</i></h2>
-							<h2 class="fridge-name">Fridge</h2>
+							<h2 class="fridge-name"><i>*Wish*</i> Fridge</h2>
+							<div class="newBev-div" ng-show="showNewWishForm">
+								<form ng-submit="postBev(false)">
+									<input type="text" ng-model="bevName" size="15" placeholder="beverage name">
+									<input type="number" ng-model="bevCalories" size="3" label="calories">
+									<input type="text" ng-model="bevDescription" size="20" placeholder="description">
+									<input type="submit" value="Post">
+								</form>
+							</div>
+							<div class="selectedBev-div" ng-show="selectedWishBev">
+								<h4><span class="delete" rel="popover" data-content="Actually nobody wants this here anymore." data-placement="top" data-original-title="Delete Beverage" data-trigger="hover" ng-click="deleteSelectedWishClicked()">X</span> {{selectedWishBev.name}}</h4>
+								<p><i>calories:</i> {{selectedWishBev.calories}}</p>
+								<p><i>description:</i> {{selectedWishBev.description}}</p>
+							</div>
 						</div>
 						<div ng-repeat="wishBev in wishBeverages" class="fridge-piece fridge-row">
-							<div class="beverage">Beverage Name</div>
+							<div ng-class="classByVotes(wishBev)" ng-click="selectWish(wishBev)" class="beverage">
+								<span class="upvote" ng-click="upvote(wishBev)">+</span>
+								<span class="upvotes">{{wishBev.upvotes}}</span>
+								<span class="name">{{wishBev.name}}</span>
+								<span class="downvotes">{{wishBev.downvotes}}</span>
+								<span class="downvote" ng-click="downvote(wishBev)">-</span>
+							</div>
 						</div>
 						<div class="fridge-piece fridge-bottom">
-							<div id="new-wish" class="new-beverage btn" rel="popover" data-placement="top" data-original-title="Add A Wish Beverage" data-trigger="hover">Add Beverage</div>
+							<div id="new-real" class="new-beverage btn" rel="popover" data-placement="top" data-original-title="Add A Wish Beverage" data-trigger="hover" ng-click="newWishButtonClicked()">Add Beverage</div>
 						</div>
 					</div>
 				</div>

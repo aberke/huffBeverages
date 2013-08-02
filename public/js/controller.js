@@ -18,6 +18,17 @@ function BeveragesCtrl($scope, $http){
 		})
 		.error(function(){console.log('API ERROR');});		
 	}
+	$scope.deleteSelectedWishClicked = function(){
+		$http({
+			method: 'DELETE',
+			url: '/beverages/'+$scope.selectedWishBev._id,
+		})
+		.success(function(returnedData){
+			$scope.wishBeverages.splice($scope.wishBeverages.indexOf($scope.selectedWishBev,1));
+			$scope.selectedWishBev = null;
+		})
+		.error(function(){console.log('API ERROR');});		
+	}
 
 	$scope.newRealButtonClicked = function(){
 		$scope.selectedRealBev = false;
@@ -94,9 +105,6 @@ function BeveragesCtrl($scope, $http){
 			if(bev.real){$scope.realBeverages.push(bev);}
 			else{$scope.wishBeverages.push(bev);}
 		}
-		console.log($scope.realBeverages);
-		console.log($scope.wishBeverages);
-
 	}
 
 	var get_beverages = function(){

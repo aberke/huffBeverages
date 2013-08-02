@@ -71,6 +71,7 @@
 .downvote, .upvote{
 	border-radius: 20px;
 	background-color: white;
+	cursor: pointer;
 }
 .upvote, .upvotes{float: left;}
 .upvote{color: blue;}
