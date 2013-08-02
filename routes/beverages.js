@@ -22,7 +22,8 @@ db.open(function(err, db) {
 exports.findAll = function(req, res) {
     db.collection('beverages', function(err, collection) {
         collection.find().toArray(function(err, items) {
-            res.send(items);
+            if (err){res.send({'error':'An error has occurred'});}
+            else{res.send(items);}
         });
     });
 }; 

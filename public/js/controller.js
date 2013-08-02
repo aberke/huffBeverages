@@ -118,7 +118,9 @@ function BeveragesCtrl($scope, $http){
 			method: 'GET',
 			url: '/beverages',
 		})
-		.success(function(returnedData){handle_beverages(returnedData);})
+		.success(function(returnedData){
+			console.log(returnedData);
+			handle_beverages(returnedData);})
 		.error(function(){console.log('API ERROR');});
 	}
 	$scope.bevClass = function(bev){
@@ -131,6 +133,7 @@ function BeveragesCtrl($scope, $http){
 	}
 	var init = function(){
 		get_beverages();
+		console.log('got beverages?');
 	}
 	init();
 }
