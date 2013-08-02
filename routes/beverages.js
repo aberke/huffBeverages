@@ -1,23 +1,42 @@
 var mongo = require('mongodb');
+var db;
  
 var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
- 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('beveragedb', server);
- 
-db.open(function(err, db) {
+
+
+var mongoUri = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/mydb';
+
+mongo.Db.connect(mongoUri, function (err, thedb) {
     if(!err) {
         console.log("Destroying and repopulating 'beveragedb' database...");
-        db.collection('beverages', function(err, collection) {
+        thedb.collection('beverages', function(err, collection) {
             collection.remove({});
         });
-        db.collection('beverages', {strict:true}, function(err, collection) {
-            populateDB();
+        thedb.collection('beverages', {strict:true}, function(err, collection) {
+            populateDB(thedb);
         });
     }
+    db = thedb;
 });
+
+// var server = new Server('localhost', 27017, {auto_reconnect: true});
+// db = new Db('beveragedb', server);
+ 
+// db.open(function(err, db) {
+//     if(!err) {
+//         console.log("Destroying and repopulating 'beveragedb' database...");
+//         db.collection('beverages', function(err, collection) {
+//             collection.remove({});
+//         });
+//         db.collection('beverages', {strict:true}, function(err, collection) {
+//             populateDB();
+//         });
+//     }
+// });
  
 exports.findAll = function(req, res) {
     db.collection('beverages', function(err, collection) {
@@ -78,7 +97,7 @@ exports.deleteBeverage = function(req, res) {
 }
  
 /*--------------------------------------------------------------------------------------------------------------------*/
-var populateDB = function() {
+var populateDB = function(db) {
  
     var beverages = [
     {
