@@ -1,14 +1,14 @@
 .dropdown-menu li{
 	padding: 10px;
 }
+li a{
+	text-decoration: underline;
+}
 .container{margin-bottom: 100px;}
 .row{
 	padding-top: 100px;
 }
-#real-fridge-div{
-}
-#wish-fridge-div{
-}
+
 .fridge-piece h2{color: purple;}
 
 .fridge-name{padding: 70px 0px 0px 70px;}
@@ -54,6 +54,7 @@
 	background-size: cover;
 	padding: 10px 60px 10px 30px;
 }
+.fridge-row .selected{opacity:1;}
 .blue-background{background-color: blue;}
 .red-background{background-color: red;}
 .beverage{
@@ -64,6 +65,7 @@
 	padding: 5px;
 	width: 210px;
 }
+.beverage .name{cursor: pointer;}
 .beverage:hover, .beverage:active{opacity:1;}
 .upvote, .upvotes, .downvote, .downvotes{
 	padding: 0px 5px;

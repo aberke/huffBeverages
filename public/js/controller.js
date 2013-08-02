@@ -41,11 +41,17 @@ function BeveragesCtrl($scope, $http){
 
 	$scope.selectReal = function(bev){
 		$scope.showNewRealForm = false;
-		$scope.selectedRealBev=bev;
+		if($scope.selectedRealBev &&(bev._id == $scope.selectedRealBev._id)){
+			$scope.selectedRealBev=null;
+		}
+		else{$scope.selectedRealBev=bev;}
 	}
 	$scope.selectWish = function(bev){
 		$scope.showNewWishForm = false;
-		$scope.selectedWishBev=bev;
+		if($scope.selectedWishBev &&(bev._id == $scope.selectedWishBev._id)){
+			$scope.selectedWishBev=null;
+		}
+		else{$scope.selectedWishBev=bev;}
 	}
 
 	$scope.upvote = function(bev){
@@ -115,9 +121,13 @@ function BeveragesCtrl($scope, $http){
 		.success(function(returnedData){handle_beverages(returnedData);})
 		.error(function(){console.log('API ERROR');});
 	}
-	$scope.classByVotes = function(bev){
-		if(bev.upvotes >= bev.downvotes){return 'blue-background';}
-		else{return 'red-background';}
+	$scope.bevClass = function(bev){
+		var bevClass = 'red-background';
+		if(bev.upvotes >= bev.downvotes){bevClass = 'blue-background';}
+		if(($scope.selectedWishBev && (bev._id == $scope.selectedWishBev._id))||($scope.selectedRealBev && (bev._id == $scope.selectedRealBev._id))){
+			bevClass += ' selected';
+		}
+		return bevClass;
 	}
 
 

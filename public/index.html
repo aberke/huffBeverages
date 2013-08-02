@@ -16,9 +16,46 @@
 						<li class="active">  
 						<a class="brand" href="#">HuffPost Beverages</a>  
 						</li>  
-						<li><a href="#">About</a></li>  
-						<li><a href="#">Portfolio</a></li>  
-						<li><a href="#">Contact</a></li>  
+						<li class="dropdown">  
+							<a href="#"  
+							class="dropdown-toggle"  
+							data-toggle="dropdown">  
+							Why  
+							<b class="caret"></b>  
+							</a>  
+							<ul class="dropdown-menu">   
+								<li><p>What's in the fridge at HuffPost?</p><p> ...now coworkers can let you know what's in that REAL fridge</p></li> 
+								<li>
+									<p>Why isn't my favorite beverage in the fridge?  Well maybe if you let management know your preferences, there will be some changes around here.  Put wishes in the *WISH* fridge.  Upvote what you like, downvote what's gross.</p>
+									<p>Any beverage with more downvotes than upvotes is not cool enough for the fridge, so it'll be highlighted red.</p>
+								</li> 
+							</ul>  
+						</li>
+						<li class="dropdown">  
+							<a href="#"  
+							class="dropdown-toggle"  
+							data-toggle="dropdown">  
+							Source Code  
+							<b class="caret"></b>  
+							</a>  
+							<ul class="dropdown-menu">   
+								<li>Take a <a target="_blank" href="https://github.com/aberke/huffBeverages">look on github</a></li> 
+							</ul>  
+						</li>
+						<li class="dropdown">  
+							<a href="#"  
+							class="dropdown-toggle"  
+							data-toggle="dropdown">  
+							How To Use  
+							<b class="caret"></b>  
+							</a>  
+							<ul class="dropdown-menu">   
+								<li><p>To see details about a beverage in a fridge, click on that beverage's name.  Click on the name again to hide details.</p></li> 
+								<li><p>To add a new beverage to a fridge, click on the respective 'Add Beverage' button and fill out the form.</p></li> 
+								<li><p>Upvote and downvote beverages!</p></li> 
+								<li><p>Delete a beverage from its fridge by selecting it and then clicking the 'X' next to its name at the top of the fridge.</p></li> 
+							</ul>  
+						</li>
 					</ul>
 					<ul class="nav pull-right">  
 						<li class="dropdown">  
@@ -59,10 +96,10 @@
 							</div>
 						</div>
 						<div ng-repeat="realBev in realBeverages" class="fridge-piece fridge-row">
-							<div ng-class="classByVotes(realBev)" ng-click="selectReal(realBev)" class="beverage">
+							<div ng-class="bevClass(realBev)" class="beverage">
 								<span class="upvote" ng-click="upvote(realBev)">+</span>
 								<span class="upvotes">{{realBev.upvotes}}</span>
-								<span class="name">{{realBev.name}}</span>
+								<span ng-click="selectReal(realBev)" class="name">{{realBev.name}}</span>
 								<span class="downvotes">{{realBev.downvotes}}</span>
 								<span class="downvote" ng-click="downvote(realBev)">-</span>
 							</div>
@@ -91,10 +128,10 @@
 							</div>
 						</div>
 						<div ng-repeat="wishBev in wishBeverages" class="fridge-piece fridge-row">
-							<div ng-class="classByVotes(wishBev)" ng-click="selectWish(wishBev)" class="beverage">
+							<div ng-class="bevClass(wishBev)" ng-class="classByVotes(wishBev)" class="beverage">
 								<span class="upvote" ng-click="upvote(wishBev)">+</span>
 								<span class="upvotes">{{wishBev.upvotes}}</span>
-								<span class="name">{{wishBev.name}}</span>
+								<span class="name" ng-click="selectWish(wishBev)">{{wishBev.name}}</span>
 								<span class="downvotes">{{wishBev.downvotes}}</span>
 								<span class="downvote" ng-click="downvote(wishBev)">-</span>
 							</div>
@@ -116,7 +153,6 @@
   	<p>Add it to the fridge.</p>
 </div>
 
-	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<link href="css/bootstrap.css" rel="stylesheet">
 	<script src="js/bootstrap.min.js"></script>
 	<script>  
