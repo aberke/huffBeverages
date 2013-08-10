@@ -82,7 +82,7 @@ exports.deleteBeverage = function(req, res) {
 }
  
 /*--------------------------------------------------------------------------------------------------------------------*/
-var populateDB = function(db) {
+var populateDB = function(thedb) {
  
     var beverages = [
     {
@@ -110,7 +110,7 @@ var populateDB = function(db) {
         calories: 0
     }];
  
-    db.collection('beverages', function(err, collection) {
+    thedb.collection('beverages', function(err, collection) {
         collection.insert(beverages, {safe:true}, function(err, result) {});
     });
  
