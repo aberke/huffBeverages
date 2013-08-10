@@ -19,28 +19,22 @@
 			<div class="navbar-inner">  
 				<div class="container">  
 					<ul class="nav">  
-						<li class="active">  
-						<a class="brand" href="#">HuffPost Beverages</a>  
+						<li class="dropdown">  
+							<a class="brand dropdown-toggle" href="#" data-toggle="dropdown">HuffPost Beverages</a>  
+							<ul class="dropdown-menu">
+								<li>
+									<img src="favicon.ico" height="50px"><p>OMG <em>beverages</em> keep me going!</p>
+								</li>
+							</ul>
 						</li>  
 						<li class="dropdown">  
-							<a href="#"  
-							class="dropdown-toggle"  
-							data-toggle="dropdown">  
-							Why  
-							<b class="caret"></b>  
-							</a>  
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Why <b class="caret"></b></a>  
 							<ul class="dropdown-menu">   
 								<li><p>What's in the fridge at HuffPost?</p><p> ...now coworkers can let you know what's in that REAL fridge</p></li> 
 								<li>
 									<p>Why isn't my favorite beverage in the fridge?  Well maybe if you let management know your preferences, there will be some changes around here.  Put wishes in the *WISH* fridge.  Upvote what you like, downvote what's gross.</p>
 									<p>Any beverage with more downvotes than upvotes is not cool enough for the fridge, so it'll be highlighted red.</p>
 								</li> 
-							</ul>  
-						</li>
-						<li class="dropdown">  
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Source Code<b class="caret"></b></a>  
-							<ul class="dropdown-menu">   
-								<li>Take a <a target="_blank" href="https://github.com/aberke/huffBeverages">look on github</a></li> 
 							</ul>  
 						</li>
 						<li class="dropdown">  
@@ -57,16 +51,21 @@
 								<li><p>Delete a beverage from its fridge by selecting it and then clicking the 'X' next to its name at the top of the fridge.</p></li> 
 							</ul>  
 						</li>
-					</ul>
-					<ul class="nav pull-right">  
 						<li class="dropdown">  
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Love to Tweet<b class="caret"></b></a>  
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Source Code<b class="caret"></b></a>  
 							<ul class="dropdown-menu">   
-								<li><img src="favicon.ico" height="50px"><p>OMG <em>beverages</em> keep me going!</p></li>  
-								<li class="socials"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>  
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>  
+								<li>Take a <a target="_blank" href="https://github.com/aberke/huffBeverages">look on github</a></li> 
 							</ul>  
-						</li>  
+						</li>
+					</ul>
+					<ul id="socials" class="nav pull-right">  
+						<li>
+							<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>  
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</li>
+						<li>
+							<div class="fb-like" data-href="http://huffpost-beverages.herokuapp.com/" data-width="250" data-colorscheme="dark" data-show-faces="false" data-send="false"></div>
+						</li>
 					</ul> 
 				</div>  
 			</div>  
@@ -150,7 +149,17 @@
 </div>
 
 		<link href="css/bootstrap.css" rel="stylesheet">
+		<div id="fb-root"></div>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=310487552339022";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<script src="js/bootstrap.min.js"></script>
+
 	<script>  
 		$('.beverage').popover();
 		$('.delete').popover();
@@ -165,5 +174,6 @@
 	  		});
 		});
 	</script>
+
 	</body>
 </html>
