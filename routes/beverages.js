@@ -10,33 +10,31 @@ var mongoUri = process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
     'mongodb://localhost/mydb';
 
+// mongo.Db.connect(mongoUri, function (err, thedb) {
+//     if(!err) {
+//         console.log("Destroying and repopulating 'beveragedb' database...");
+//         thedb.collection('beverages', function(err, collection) {
+//             collection.remove({});
+//         });
+//         thedb.collection('beverages', {strict:true}, function(err, collection) {
+//             populateDB(thedb);
+//         });
+//     }
+//     db = thedb;
+// });
 mongo.Db.connect(mongoUri, function (err, thedb) {
     if(!err) {
-        console.log("Destroying and repopulating 'beveragedb' database...");
-        thedb.collection('beverages', function(err, collection) {
-            collection.remove({});
-        });
         thedb.collection('beverages', {strict:true}, function(err, collection) {
-            populateDB(thedb);
+            if(err){
+                console.log('populating beverages database...');
+                populateDB(thedb);
+            }
         });
     }
     db = thedb;
 });
 
-// var server = new Server('localhost', 27017, {auto_reconnect: true});
-// db = new Db('beveragedb', server);
- 
-// db.open(function(err, db) {
-//     if(!err) {
-//         console.log("Destroying and repopulating 'beveragedb' database...");
-//         db.collection('beverages', function(err, collection) {
-//             collection.remove({});
-//         });
-//         db.collection('beverages', {strict:true}, function(err, collection) {
-//             populateDB();
-//         });
-//     }
-// });
+
  
 exports.findAll = function(req, res) {
     db.collection('beverages', function(err, collection) {
