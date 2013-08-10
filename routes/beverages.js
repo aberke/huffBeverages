@@ -1,27 +1,14 @@
 var mongo = require('mongodb');
-var db;
  
 var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
+    BSON = mongo.BSONPure,
+    db;
 
 
 var mongoUri = process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
     'mongodb://localhost/mydb';
 
-// mongo.Db.connect(mongoUri, function (err, thedb) {
-//     if(!err) {
-//         console.log("Destroying and repopulating 'beveragedb' database...");
-//         thedb.collection('beverages', function(err, collection) {
-//             collection.remove({});
-//         });
-//         thedb.collection('beverages', {strict:true}, function(err, collection) {
-//             populateDB(thedb);
-//         });
-//     }
-//     db = thedb;
-// });
 mongo.Db.connect(mongoUri, function (err, thedb) {
     if(!err) {
         thedb.collection('beverages', {strict:true}, function(err, collection) {
