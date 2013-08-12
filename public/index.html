@@ -90,7 +90,8 @@
 							<div class="newBev-div" ng-show="showNewRealForm">
 								<form ng-submit="postBev(true)">
 									<input type="text" ng-model="bevName" size="15" placeholder="beverage name">
-									<input type="number" ng-model="bevCalories" size="3" label="calories">
+									<label class="calories-label">calories: </label>
+									<input type="number" class="calories-input" ng-model="bevCalories" size="3" label="calories">
 									<input type="text" ng-model="bevDescription" size="20" placeholder="description">
 									<input type="submit" value="Post">
 								</form>
@@ -122,7 +123,8 @@
 							<div class="newBev-div" ng-show="showNewWishForm">
 								<form ng-submit="postBev(false)">
 									<input type="text" ng-model="bevName" size="15" placeholder="beverage name">
-									<input type="number" ng-model="bevCalories" size="3" label="calories">
+									<label class="calories-label">calories: </label>
+									<input type="number" class="calories-input" ng-model="bevCalories" size="3" label="calories">
 									<input type="text" ng-model="bevDescription" size="20" placeholder="description">
 									<input type="submit" value="Post">
 								</form>

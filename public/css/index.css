@@ -35,17 +35,32 @@ li a{
 	width: 200px;
 	text-align: center;
 }
-.newBev-div input{
+.newBev-div form{
+	padding-top: 5px;
+}
+.newBev-div input[type=text]{
 	width: 170px;
 	height: 12px;
+	font-size: 11px;
+}
+.newBev-div input[type=number]{
+	width: 40%;
+	height: 14px;
 	font-size: 11px;
 }
 .newBev-div input[type=submit]{
 	margin:0;
 	padding: 2px 8px;
 	font-weight: 400px;
+	background-color: purple;
+	color: white;
+	border-radius: 6px;
 }
 .newBev-div form{margin: 0;}
+.calories-label, .calories-input{
+	display: inline-block;
+	width: 40%;
+}
 .selectedBev-div p{
 	margin: 1px;
 }
